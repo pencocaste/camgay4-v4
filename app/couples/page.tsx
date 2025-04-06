@@ -1,0 +1,45 @@
+import { Metadata } from 'next';
+import ModelGrid from '@/components/ModelGrid';
+import MenSidebar from '@/components/sidebars/MenSidebar';
+import { MenCouplesDescription } from '@/components/descriptions/MenCouplesDescription';
+import { MenCouplesBottomDescription } from '@/components/descriptions/MenCouplesBottomDescription';
+import { fetchModels } from '@/lib/api';
+
+export const metadata: Metadata = {
+  title: 'Gay Couples Cams ❤️ Live Sex Chat on CAMGAY4.com',
+  description: 'Watch Gay Couples Sex Cams Shows for FREE. ⭐ Join our Adult Chat with Male Couples. +200 Live Couples Webcams. No Registration Required.',
+  alternates: {
+    canonical: 'https://live.camgay4.com/couples/',
+  },
+};
+
+export const dynamic = 'force-dynamic';
+
+export default async function CouplesPage() {
+  const initialModels = await fetchModels('men', 1, 36, 'couple');
+
+  return (
+    <div className="flex flex-col min-h-full">
+      <div className="w-full bg-white flex-1">
+        <div className="w-full px-4 md:w-[calc(100%-15px)] md:max-w-[2400px] mx-auto py-4">
+          <div className="flex flex-col md:flex-row gap-4">
+            <MenSidebar />
+            <div className="flex-1">
+              <div className="mb-4 bg-white rounded-t-lg">
+                <MenCouplesDescription />
+              </div>
+              <ModelGrid 
+                category="men" 
+                initialModels={initialModels.results}
+                tag="couple"
+              />
+              <div className="mt-8">
+                <MenCouplesBottomDescription />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

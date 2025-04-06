@@ -1,0 +1,22 @@
+# Permitir a todos los robots
+User-agent: *
+Allow: /
+
+# Bloquear rutas privadas y administrativas
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /login/
+Disallow: /register/
+Disallow: /settings/
+Disallow: /profile/
+Disallow: /_next/
+Disallow: /static/
+
+# Bloquear archivos específicos
+Disallow: /*.json$
+Disallow: /README.md$
+Disallow: /LICENSE$
+
+# Sitemap
+Sitemap: https://live.camgay4.com/sitemap.xml
